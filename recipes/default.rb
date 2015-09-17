@@ -37,9 +37,9 @@ end
 # Install and configure Ruby through rvm
 include_recipe 'rvm::system'
 
-# Bundle-install if default project directory present
+# Serve documentation if provided
 execute 'bundler_install' do
   cwd node['docs-server']['project_dir']
-  command 'bundle exec jekyll serve'
+  command 'jekyll serve'
   only_if { ::File.directory?( node['docs-server']['project_dir'] ) }
 end
