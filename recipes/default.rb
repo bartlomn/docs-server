@@ -34,8 +34,18 @@ firewall_rule 'http' do
   action :create
 end
 
-# Install and configure Ruby
-include_recipe 'ruby::default'
+# Install and configure Ruby through rvm
+include_recipe 'rvm::system'
 
-# Install and configure Bundler
-include_recipe 'bundler::default'
+# Add Bundler gem
+rvm_gem "bundler" do
+  ruby_string node['rvm']['default_ruby']
+  action      :install
+end
+
+# Bundle-install if default project directory present
+execute 'bundler_install' do
+  cwd node['docs-server']['project_dir']
+  command 'bundler install'
+  only_if { ::File.directory?( node['docs-server']['project_dir'] ) }
+end

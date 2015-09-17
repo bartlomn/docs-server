@@ -24,11 +24,10 @@ maintainer_email 'bnowak@bnowak.com'
 license          'Apache 2.0'
 description      'Installs/Configures docs-server'
 long_description 'Installs/Configures docs-server'
-version          '0.1.0'
+version          '0.1.1'
 
 supports 'ubuntu'
 
 depends 'apt', '~> 2.6.1'
 depends 'firewall', '~> 2.0.2'
-depends 'ruby', '~> 0.9.3'
-depends 'bundler', '~> 0.2.0'
+depends 'rvm', '~> 0.9.4'

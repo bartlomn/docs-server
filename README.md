@@ -14,7 +14,7 @@ Reference in your Vagrantfile, like so:
 ```
   config.vm.provision :chef_solo do |chef|
       chef.cookbooks_path = ['path_to_cookbooks_dir']
-      chef.add_recipe 'hunted-stack::default'
+      chef.add_recipe 'docs-server::default'
   end
 ```
 
