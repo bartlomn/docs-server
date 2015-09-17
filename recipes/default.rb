@@ -38,7 +38,13 @@ end
 include_recipe 'rvm::system'
 
 # Add Bundler gem
-rvm_gem "bundler" do
+rvm_gem 'bundler' do
+  ruby_string node['rvm']['default_ruby']
+  action      :install
+end
+
+# Add Ruby JS runtime gem
+rvm_gem 'therubyracer' do
   ruby_string node['rvm']['default_ruby']
   action      :install
 end
