@@ -25,7 +25,6 @@ include_recipe 'apt::default'
 
 # Install some packages
 package 'figlet'
-package 'lolcat'
 
 # Configure firewall
 include_recipe 'firewall::default'
@@ -56,5 +55,5 @@ end
 
 # Notify we're done
 execute 'complete_msg' do
-    command "figlet #{ node['docs-server']['bootstrap_complete_msg'] } | lolcat -a -d 2"
+    command "figlet #{ node['docs-server']['bootstrap_complete_msg'] }"
 end
