@@ -43,3 +43,8 @@ include_recipe 'rvm::system'
 #   command 'jekyll serve'
 #   only_if { ::File.directory?( node['docs-server']['project_dir'] ) }
 # end
+
+# Notify we're done
+execute 'complete_msg' do
+    command "figlet #{ node['docs-server']['bootstrap_complete_msg'] } | lolcat"
+end
