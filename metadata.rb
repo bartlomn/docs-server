@@ -24,7 +24,7 @@ maintainer_email 'bnowak@bnowak.com'
 license          'Apache 2.0'
 description      'Installs/Configures docs-server'
 long_description 'Installs/Configures docs-server'
-version          '0.3.4'
+version          '0.3.5'
 
 supports 'ubuntu'
 
