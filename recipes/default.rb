@@ -41,10 +41,15 @@ end
 # Install and configure Ruby through rvm
 include_recipe 'rvm::system'
 
+# Kill jekyll if previously run
+execute 'jekyll_kill' do
+  command 'pkill -f jekyll'
+end
+
 # Serve documentation if provided
 execute 'jekyll_serve' do
   cwd node['docs-server']['project_dir']
-  command 'pkill -f jekyll && jekyll serve'
+  command 'nohup jekyll serve > /dev/null &'
   only_if { ::File.directory?( node['docs-server']['project_dir'] ) }
 end
 
