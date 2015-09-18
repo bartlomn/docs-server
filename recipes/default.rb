@@ -38,8 +38,8 @@ end
 include_recipe 'rvm::system'
 
 # Serve documentation if provided
-execute 'bundler_install' do
-  cwd node['docs-server']['project_dir']
-  command 'jekyll serve'
-  only_if { ::File.directory?( node['docs-server']['project_dir'] ) }
-end
+# execute 'bundler_install' do
+#   cwd node['docs-server']['project_dir']
+#   command 'jekyll serve'
+#   only_if { ::File.directory?( node['docs-server']['project_dir'] ) }
+# end
