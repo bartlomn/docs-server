@@ -18,4 +18,4 @@ default['rvm']['global_gems'] = [
 
 default['docs-server']['port'] = 4000
 default['docs-server']['project_dir'] = '/project_data'
-default['docs-server']['bootstrap_complete_msg'] = 'Boom! I'm done!'
+default['docs-server']['bootstrap_complete_msg'] = 'Boom! Done!'
