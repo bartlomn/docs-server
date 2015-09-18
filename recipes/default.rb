@@ -43,7 +43,8 @@ include_recipe 'rvm::system'
 
 # Kill jekyll if previously run
 execute 'jekyll_kill' do
-  command 'pkill -f jekyll || :'
+  command 'pkill -f jekyll'
+  returns [0, 1]
 end
 
 # Serve documentation if provided
