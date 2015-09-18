@@ -23,6 +23,10 @@
 # Refresh apt cache update packages
 include_recipe 'apt::default'
 
+# Install some packages
+package 'figlet'
+package 'lolcat'
+
 # Configure firewall
 include_recipe 'firewall::default'
 
@@ -38,13 +42,13 @@ end
 include_recipe 'rvm::system'
 
 # Serve documentation if provided
-# execute 'bundler_install' do
-#   cwd node['docs-server']['project_dir']
-#   command 'jekyll serve'
-#   only_if { ::File.directory?( node['docs-server']['project_dir'] ) }
-# end
+execute 'jekyll_serve' do
+  cwd node['docs-server']['project_dir']
+  command 'pkill -f jekyll && jekyll serve'
+  only_if { ::File.directory?( node['docs-server']['project_dir'] ) }
+end
 
 # Notify we're done
 execute 'complete_msg' do
-    command "figlet #{ node['docs-server']['bootstrap_complete_msg'] } | lolcat"
+    command "figlet #{ node['docs-server']['bootstrap_complete_msg'] } | lolcat -a -d 2"
 end

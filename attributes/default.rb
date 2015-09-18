@@ -13,17 +13,9 @@ default['rvm']['global_gems'] = [
     {
         'name' => 'github-pages',
         'version' => '39'
-    },
-    {
-        'name' => 'figlet',
-        'version' => '1.1.0'
-    },
-    {
-        'name' => 'lolcat',
-        'version' => '42.1.43'
     }
 ]
 
 default['docs-server']['port'] = 4000
 default['docs-server']['project_dir'] = '/project_data'
-default['docs-server']['bootstrap_complete_msg'] = 'bnowak.com'
+default['docs-server']['bootstrap_complete_msg'] = 'Boom! I'm done!'
