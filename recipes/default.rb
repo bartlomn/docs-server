@@ -40,15 +40,12 @@ end
 # Install and configure Ruby through rvm
 include_recipe 'rvm::system'
 
-# Kill jekyll if previously run
-execute 'jekyll_kill' do
-  command 'pkill -f jekyll'
-  returns [0, 1]
-end
-
 # Serve documentation if provided
 if File.directory?( node['docs-server']['project_dir'] )
     bash 'run_jekyll_docs_server' do
+         cwd '/home/vagrant'
+         environment ({'HOME' => '/home/vagrant', 'USER' => 'vagrant'})
+         user 'vagrant'
          code <<-EOF
             pkill -f jekyll
             cd #{ node['docs-server']['project_dir'] }
