@@ -47,10 +47,14 @@ execute 'jekyll_kill' do
 end
 
 # Serve documentation if provided
-execute 'jekyll_serve' do
-  cwd node['docs-server']['project_dir']
-  command 'nohup jekyll serve > /dev/null &'
-  only_if { ::File.directory?( node['docs-server']['project_dir'] ) }
+if File.directory?( node['docs-server']['project_dir'] )
+    bash 'run_jekyll_docs_server' do
+         code <<-EOF
+            pkill -f jekyll
+            cd #{ node['docs-server']['project_dir'] }
+            jekyll serve > #{ node['docs-server']['logs_dir'] }/jekyll.log 2>&1 &
+         EOF
+    end
 end
 
 # Notify we're done
